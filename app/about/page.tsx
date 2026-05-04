@@ -209,7 +209,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Filter bar ──────────────────────────────── */}
-      <div className="bg-background/95 backdrop-blur border-b border-border py-4 shadow-sm">
+      {/* <div className="bg-background/95 backdrop-blur border-b border-border py-4 shadow-sm">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
             <div className="flex gap-2 flex-wrap">
@@ -227,79 +227,10 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* ── Cert Grid ───────────────────────────────── */}
-      <section className="py-16 max-w-7xl mx-auto px-6">
-        <p className="text-muted-foreground text-sm mb-8">Showing {filtered.length} certification{filtered.length !== 1 ? 's' : ''}</p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filtered.map((cert, i) => (
-            <Reveal key={cert.id} delay={i * 50}>
-              <div
-                className={`rounded-2xl border transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:shadow-xl group ${expanded === cert.id ? 'border-primary shadow-xl' : 'border-border hover:border-primary/40 bg-card'}`}
-                onClick={() => setExpanded(expanded === cert.id ? null : cert.id)}
-              >
-                {/* Logo block */}
-                <div className="p-6 flex items-center gap-4 border-b border-border">
-                  <div className="w-16 h-16 rounded-xl flex items-center justify-center shrink-0 font-black text-center text-xs leading-tight" style={{ background: cert.bg, color: cert.color }}>
-                    {cert.logoText}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-bold text-foreground text-sm">{cert.name}</p>
-                    <span className="inline-block mt-1 px-2 py-0.5 rounded-full text-[10px] font-semibold" style={{ background: cert.bg, color: cert.color }}>
-                      {cert.category}
-                    </span>
-                  </div>
-                </div>
 
-                {/* Body */}
-                <div className="p-5">
-                  <p className="text-muted-foreground text-xs leading-relaxed line-clamp-3">{cert.description}</p>
-                  <div className="mt-4 flex items-center justify-between">
-                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                      <Globe className="w-3 h-3" />
-                      {cert.applicability}
-                    </div>
-                    <span className="text-xs font-semibold transition-transform group-hover:translate-x-0.5" style={{ color: cert.color }}>
-                      {expanded === cert.id ? 'Less' : 'Details'} →
-                    </span>
-                  </div>
-                </div>
-
-                {/* Expanded */}
-                {expanded === cert.id && (
-                  <div className="px-5 pb-5 border-t border-border mt-0 pt-4 space-y-3 animate-fade-in-up">
-                    <div>
-                      <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1">Issuing Body</p>
-                      <p className="text-sm text-foreground">{cert.issuer}</p>
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1">Applicable To</p>
-                      <p className="text-sm text-foreground">{cert.validFor}</p>
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1">Country / Region</p>
-                      <p className="text-sm text-foreground">{cert.country}</p>
-                    </div>
-                    <a href="/contact" className="flex items-center gap-2 text-xs font-semibold mt-2 transition-colors hover:opacity-80" style={{ color: cert.color }}>
-                      <CheckCircle className="w-3.5 h-3.5" />
-                      Request cert documentation
-                    </a>
-                  </div>
-                )}
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        {filtered.length === 0 && (
-          <div className="text-center py-24 text-muted-foreground">
-            <ShieldCheck className="w-12 h-12 mx-auto mb-4 opacity-30" />
-            <p className="text-lg font-semibold">No certifications found</p>
-            <p className="text-sm mt-2">Try adjusting your search or filter</p>
-          </div>
-        )}
-      </section>
 
 
 
